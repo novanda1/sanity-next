@@ -1,3 +1,30 @@
+import { PortableText } from "@portabletext/react";
+
+const myPortableTextComponents = {
+  types: {
+    image: ({ value }: any) => <img src={value.imageUrl} />,
+    callToAction: ({ value, isInline }: any) =>
+      isInline ? (
+        <a href={value.url}>{value.text}</a>
+      ) : (
+        <div className="callToAction">{value.text}</div>
+      ),
+  },
+
+  marks: {
+    link: ({ children, value }: any) => {
+      const rel = !value.href.startsWith("/")
+        ? "noreferrer noopener"
+        : undefined;
+      return (
+        <a href={value.href} rel={rel}>
+          {children}
+        </a>
+      );
+    },
+  },
+};
+
 const PostItem: React.FC<{ post: any }> = ({ post }) => {
   return (
     <div className="relative">
@@ -9,8 +36,10 @@ const PostItem: React.FC<{ post: any }> = ({ post }) => {
           {post.title}
         </h2>
         <p className="mt-3 text-base leading-6 text-gray-500">
-          Use structured content to integrate across organizations and
-          disciplines, assembling your infrastructure from the best components.
+          <PortableText
+            value={post.body}
+            components={myPortableTextComponents}
+          />
         </p>
       </div>
       <div className="mt-3">
