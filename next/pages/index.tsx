@@ -25,7 +25,7 @@ export default function IndexPage({ posts }: { posts: any[] }) {
           <div>
             <div>¯\_(ツ)_/¯</div>
             <p>
-              Your data will show up here when you've configured everything
+              Your data will show up here when youve configured everything
               correctly
             </p>
           </div>
@@ -43,7 +43,7 @@ const client = createClient({
 });
 
 export async function getStaticProps() {
-  const posts = await client.fetch(`*[_type == "posts"]`);
+  const posts = await client.fetch(`*[_type == "article"]`);
 
   return {
     props: {
