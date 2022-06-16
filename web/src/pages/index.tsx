@@ -1,4 +1,3 @@
-import { createClient } from "next-sanity";
 import sanityClient from "../lib/sanityClient";
 
 export default function IndexPage({ posts }: { posts: any[] }) {
@@ -9,7 +8,7 @@ export default function IndexPage({ posts }: { posts: any[] }) {
           <div>
             {posts.map((post) => (
               <>
-                <h3>{post.title}</h3>
+                <h3 className="text-red-400">{post.title}</h3>
               </>
             ))}
           </div>
