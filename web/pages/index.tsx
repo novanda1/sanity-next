@@ -1,4 +1,5 @@
 import { createClient } from "next-sanity";
+import sanityClient from "../lib/sanityClient";
 
 export default function IndexPage({ posts }: { posts: any[] }) {
   return (
@@ -35,15 +36,8 @@ export default function IndexPage({ posts }: { posts: any[] }) {
   );
 }
 
-const client = createClient({
-  projectId: "dfl5mg39",
-  dataset: "production",
-  apiVersion: "2022-06-15",
-  useCdn: false,
-});
-
 export async function getStaticProps() {
-  const posts = await client.fetch(`*[_type == "article"]`);
+  const posts = await sanityClient.fetch(`*[_type == "article"]`);
 
   return {
     props: {
