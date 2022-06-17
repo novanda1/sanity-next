@@ -9,6 +9,13 @@ export default {
       title: "Title",
     },
     {
+      title: 'Category',
+      name: 'category',
+      type: 'reference',
+      to: [{type: 'category'}]
+      // Learn more at https://youtu.be/AaKfuhndEf8
+    },
+    {
       name: "body",
       type: "array",
       title: "body",
