@@ -24,7 +24,7 @@ export default function IndexPage({ posts }: { posts: any[] }) {
         <div className="static p-24 sm:p-32 w-full md:max-w-536 lg:max-w-736 md:absolute md:right-0 lg:py-88 lg:pr-88 md:pl-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-10">
             {posts?.map((post) => (
-              <Card key={post.title} post={post} />
+              <Card key={post._createdAt} post={post} />
             ))}
           </div>
         </div>
@@ -34,7 +34,9 @@ export default function IndexPage({ posts }: { posts: any[] }) {
 }
 
 export async function getStaticProps() {
-  const posts = await sanityClient.fetch(`*[_type == "article"]`);
+  const posts = await sanityClient.fetch(
+    `*[_type == "article"]{title,body,_createdAt,category->}`
+  );
 
   return {
     props: {
