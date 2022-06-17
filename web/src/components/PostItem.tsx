@@ -1,4 +1,5 @@
 import { PortableText } from "@portabletext/react";
+import { formatDate } from "../utils/date";
 
 const myPortableTextComponents = {
   types: {
@@ -29,17 +30,14 @@ const PostItem: React.FC<{ post: any }> = ({ post }) => {
   return (
     <div className="relative">
       <p className="text-sm leading-5 text-gray-500">
-        <time>Jan 28, 2021</time>
+        <time>{formatDate(post._createdAt)}</time>
       </p>
       <div>
         <h2 className="mt-2 text-xl leading-7 font-semibold text-gray-900">
           {post.title}
         </h2>
         <p className="mt-3 text-base leading-6 text-gray-500">
-          <PortableText
-            value={post.body}
-            components={myPortableTextComponents}
-          />
+          {post.body[0].children[0].text || ""}
         </p>
       </div>
       <div className="mt-3">
