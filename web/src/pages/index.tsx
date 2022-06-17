@@ -9,14 +9,15 @@ export default function IndexPage({ posts }: { posts: any[] }) {
       <div className="relative flex flex-col w-screen mx-auto text-base max-w-1440 text-dawn md:flex-row  h-full min-h-screen">
         <div className="static flex flex-col justify-between w-full p-24 sm:p-32 md:max-w-496 md:fixed md:h-screen lg:py-88 lg:pl-88 md:pr-72 lg:pr-0">
           <div>
-            <h1 className="text-3xl font-bold leading-tight lg:text-4xl lg:leading-none text-zenith">
+            <h1 className="text-5xl font-bold leading-tight lg:leading-none">
               Sanity Nextjs
             </h1>
             <h2 className="mt-[16px] text-xl">Sanity for Content Provider</h2>
 
-            <p className="mt-[16px] font-light leading-e text-stone-400 text-[14px]">
-              With Sanity you can structure your content, so it can be
-              transformed and distributed any way you like.
+            <p className="mt-[28px] font-light leading-e text-zinc-400 text-[14px]">
+              Sanity.io is the unified content platform that powers better
+              digital experiences. With Sanity you can structure your content,
+              so it can be transformed and distributed any way you like.
             </p>
           </div>
         </div>
