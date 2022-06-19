@@ -1,6 +1,4 @@
 import Card from "../components/Card";
-import Header from "../components/Header";
-import PostItem from "../components/PostItem";
 import sanityClient from "../lib/sanityClient";
 
 export default function IndexPage({ posts }: { posts: any[] }) {
@@ -14,7 +12,7 @@ export default function IndexPage({ posts }: { posts: any[] }) {
             </h1>
             <h2 className="mt-[16px] text-xl">Sanity for Content Provider</h2>
 
-            <p className="mt-[28px] font-light leading-e text-zinc-400 text-[14px]">
+            <p className="mt-[28px] font-light leading-e text-zinc-200 text-[14px]">
               Sanity.io is the unified content platform that powers better
               digital experiences. With Sanity you can structure your content,
               so it can be transformed and distributed any way you like.
