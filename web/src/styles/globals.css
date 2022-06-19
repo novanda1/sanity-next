@@ -4,6 +4,23 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Montserrat", Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Montserrat", Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.gradient-y-transparent-night {
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 8%, 0),
+    #151515
+  );
+}
+
+.gradient-y-night-transparent {
+  background: linear-gradient(
+    0deg,
+    hsla(0, 0%, 8%, 0),
+    #151515
+  );
 }
