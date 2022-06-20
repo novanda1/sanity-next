@@ -36,6 +36,7 @@ export type Article = Document & {
   _updatedAt?: Maybe<Scalars['DateTime']>;
   bodyRaw?: Maybe<Scalars['JSON']>;
   category?: Maybe<Category>;
+  slug?: Maybe<Slug>;
   title?: Maybe<Scalars['String']>;
 };
 
@@ -49,6 +50,7 @@ export type ArticleFilter = {
   _type?: InputMaybe<StringFilter>;
   _updatedAt?: InputMaybe<DatetimeFilter>;
   category?: InputMaybe<CategoryFilter>;
+  slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
 };
 
@@ -59,6 +61,7 @@ export type ArticleSorting = {
   _rev?: InputMaybe<SortOrder>;
   _type?: InputMaybe<SortOrder>;
   _updatedAt?: InputMaybe<SortOrder>;
+  slug?: InputMaybe<SlugSorting>;
   title?: InputMaybe<SortOrder>;
 };
 
@@ -788,7 +791,7 @@ export type StringFilter = {
 export type AllArticleQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllArticleQuery = { __typename?: 'RootQuery', allArticle: Array<{ __typename?: 'Article', _id?: string | null, _createdAt?: any | null, title?: string | null, bodyRaw?: any | null, category?: { __typename?: 'Category', title?: string | null, slug?: { __typename?: 'Slug', current?: string | null } | null } | null }> };
+export type AllArticleQuery = { __typename?: 'RootQuery', allArticle: Array<{ __typename?: 'Article', _id?: string | null, _createdAt?: any | null, title?: string | null, bodyRaw?: any | null, slug?: { __typename?: 'Slug', current?: string | null } | null, category?: { __typename?: 'Category', title?: string | null, slug?: { __typename?: 'Slug', current?: string | null } | null } | null }> };
 
 
 export const AllArticleDocument = gql`
@@ -798,6 +801,9 @@ export const AllArticleDocument = gql`
     _createdAt
     title
     bodyRaw
+    slug {
+      current
+    }
     category {
       title
       slug {

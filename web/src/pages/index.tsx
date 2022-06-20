@@ -1,12 +1,8 @@
 import Card from "../components/Card";
 import Layout from "../components/Layout";
-import {
-  useAllArticleLazyQuery,
-  useAllArticleQuery,
-} from "../generated/graphql";
-import sanityClient from "../lib/sanityClient";
+import { useAllArticleQuery } from "../generated/graphql";
 
-export default function IndexPage({ posts }: { posts: any[] }) {
+export default function IndexPage() {
   const { data, loading, error } = useAllArticleQuery({ ssr: true });
 
   return (
@@ -41,16 +37,4 @@ export default function IndexPage({ posts }: { posts: any[] }) {
       </div>
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const posts = await sanityClient.fetch(
-    `*[_type == "article"]{title,body,_createdAt,category->}`
-  );
-
-  return {
-    props: {
-      posts,
-    },
-  };
 }

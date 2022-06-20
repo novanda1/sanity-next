@@ -4,6 +4,9 @@ query AllArticle {
     _createdAt
     title
     bodyRaw
+    slug {
+      current
+    }
     category {
       title
       slug {
