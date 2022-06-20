@@ -32,7 +32,7 @@ const SinglePost: React.FC = () => {
           </div>
         </div>
         <div className="static p-[24px] lg:p-[32px] w-full md:max-w-536 lg:max-w-736 md:absolute md:right-0 lg:py-[88px] lg:pr-[88px] md:pl-0">
-          <div className="prose lg:prose-xl">
+          <div className="prose lg:prose-lg prose-invert">
             <PortableText value={data?.Article?.bodyRaw} />
           </div>
         </div>
