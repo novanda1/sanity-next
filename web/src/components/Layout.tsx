@@ -1,12 +1,9 @@
-import {
-  ReactNode,
-  useLayoutEffect,
-} from "react";
+import { ReactNode, useEffect } from "react";
 
 const Layout: React.FC<{
   children: ReactNode;
 }> = ({ children }) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     document.body.classList.add("bg-zinc-900");
     document.body.classList.add("text-white");
   }, []);
@@ -14,4 +11,4 @@ const Layout: React.FC<{
   return <>{children}</>;
 };
 
-export default Layout
+export default Layout;
