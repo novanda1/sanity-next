@@ -1,17 +1,5 @@
 query AllArticle {
   allArticle {
-    _id
-    _createdAt
-    title
-    bodyRaw
-    slug {
-      current
-    }
-    category {
-      title
-      slug {
-        current
-      }
-    }
+    ...ArticleFragment
   }
 }

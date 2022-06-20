@@ -1,0 +1,5 @@
+query Article($id: ID!) {
+  Article(id: $id) {
+    ...ArticleFragment
+  }
+}

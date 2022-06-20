@@ -1,0 +1,15 @@
+fragment ArticleFragment on Article {
+  _id
+  _createdAt
+  title
+  bodyRaw
+  slug {
+    current
+  }
+  category {
+    title
+    slug {
+      current
+    }
+  }
+}

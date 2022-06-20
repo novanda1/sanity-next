@@ -24,7 +24,7 @@ const Card: React.FC<{ post: Article }> = ({ post }) => {
           </a>
         </Link>
       </div>
-      <Link href={`post/${post?.slug?.current}`}>
+      <Link href={`post/${post?._id}`}>
         <a className="absolute inset-0"></a>
       </Link>
     </div>

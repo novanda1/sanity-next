@@ -793,26 +793,39 @@ export type AllArticleQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type AllArticleQuery = { __typename?: 'RootQuery', allArticle: Array<{ __typename?: 'Article', _id?: string | null, _createdAt?: any | null, title?: string | null, bodyRaw?: any | null, slug?: { __typename?: 'Slug', current?: string | null } | null, category?: { __typename?: 'Category', title?: string | null, slug?: { __typename?: 'Slug', current?: string | null } | null } | null }> };
 
+export type ArticleQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
-export const AllArticleDocument = gql`
-    query AllArticle {
-  allArticle {
-    _id
-    _createdAt
+
+export type ArticleQuery = { __typename?: 'RootQuery', Article?: { __typename?: 'Article', _id?: string | null, _createdAt?: any | null, title?: string | null, bodyRaw?: any | null, slug?: { __typename?: 'Slug', current?: string | null } | null, category?: { __typename?: 'Category', title?: string | null, slug?: { __typename?: 'Slug', current?: string | null } | null } | null } | null };
+
+export type ArticleFragmentFragment = { __typename?: 'Article', _id?: string | null, _createdAt?: any | null, title?: string | null, bodyRaw?: any | null, slug?: { __typename?: 'Slug', current?: string | null } | null, category?: { __typename?: 'Category', title?: string | null, slug?: { __typename?: 'Slug', current?: string | null } | null } | null };
+
+export const ArticleFragmentFragmentDoc = gql`
+    fragment ArticleFragment on Article {
+  _id
+  _createdAt
+  title
+  bodyRaw
+  slug {
+    current
+  }
+  category {
     title
-    bodyRaw
     slug {
       current
-    }
-    category {
-      title
-      slug {
-        current
-      }
     }
   }
 }
     `;
+export const AllArticleDocument = gql`
+    query AllArticle {
+  allArticle {
+    ...ArticleFragment
+  }
+}
+    ${ArticleFragmentFragmentDoc}`;
 
 /**
  * __useAllArticleQuery__
@@ -840,3 +853,38 @@ export function useAllArticleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type AllArticleQueryHookResult = ReturnType<typeof useAllArticleQuery>;
 export type AllArticleLazyQueryHookResult = ReturnType<typeof useAllArticleLazyQuery>;
 export type AllArticleQueryResult = Apollo.QueryResult<AllArticleQuery, AllArticleQueryVariables>;
+export const ArticleDocument = gql`
+    query Article($id: ID!) {
+  Article(id: $id) {
+    ...ArticleFragment
+  }
+}
+    ${ArticleFragmentFragmentDoc}`;
+
+/**
+ * __useArticleQuery__
+ *
+ * To run a query within a React component, call `useArticleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useArticleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useArticleQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useArticleQuery(baseOptions: Apollo.QueryHookOptions<ArticleQuery, ArticleQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ArticleQuery, ArticleQueryVariables>(ArticleDocument, options);
+      }
+export function useArticleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ArticleQuery, ArticleQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ArticleQuery, ArticleQueryVariables>(ArticleDocument, options);
+        }
+export type ArticleQueryHookResult = ReturnType<typeof useArticleQuery>;
+export type ArticleLazyQueryHookResult = ReturnType<typeof useArticleLazyQuery>;
+export type ArticleQueryResult = Apollo.QueryResult<ArticleQuery, ArticleQueryVariables>;
