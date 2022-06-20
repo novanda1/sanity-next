@@ -9,6 +9,16 @@ export default {
       title: "Title",
     },
     {
+      title: "Slug",
+      name: "slug",
+      type: "slug",
+      options: {
+        source: "title",
+        maxLength: 96,
+        auto: true,
+      },
+    },
+    {
       title: 'Category',
       name: 'category',
       type: 'reference',
