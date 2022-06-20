@@ -1,8 +1,14 @@
 import Card from "../components/Card";
 import Layout from "../components/Layout";
+import {
+  useAllArticleLazyQuery,
+  useAllArticleQuery,
+} from "../generated/graphql";
 import sanityClient from "../lib/sanityClient";
 
 export default function IndexPage({ posts }: { posts: any[] }) {
+  const { data, loading, error } = useAllArticleQuery({ ssr: true });
+
   return (
     <Layout>
       <div className="relative flex flex-col w-screen mx-auto text-base max-w-1440 text-dawn md:flex-row h-full min-h-screen">
@@ -24,8 +30,8 @@ export default function IndexPage({ posts }: { posts: any[] }) {
         </div>
         <div className="static p-[24px] lg:p-[32px] w-full md:max-w-536 lg:max-w-736 md:absolute md:right-0 lg:py-[88px] lg:pr-[88px] md:pl-0">
           <div className="grid grid-cols-1 2xl:grid-cols-2 gap-3 md:gap-4">
-            {posts?.map((post) => (
-              <Card key={post._createdAt} post={post} />
+            {data?.allArticle?.map((post) => (
+              <Card key={post._id} post={post} />
             ))}
           </div>
         </div>

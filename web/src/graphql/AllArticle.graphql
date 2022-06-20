@@ -1,0 +1,14 @@
+query AllArticle {
+  allArticle {
+    _id
+    _createdAt
+    title
+    bodyRaw
+    category {
+      title
+      slug {
+        current
+      }
+    }
+  }
+}
