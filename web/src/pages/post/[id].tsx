@@ -12,8 +12,6 @@ const SinglePost: React.FC = () => {
     variables: { id: id as string },
   });
 
-  console.log(id);
-
   return (
     <Layout>
       <div className="relative flex flex-col w-screen mx-auto text-base max-w-1440 text-dawn md:flex-row h-full min-h-screen">
@@ -34,7 +32,7 @@ const SinglePost: React.FC = () => {
           </div>
         </div>
         <div className="static p-[24px] lg:p-[32px] w-full md:max-w-536 lg:max-w-736 md:absolute md:right-0 lg:py-[88px] lg:pr-[88px] md:pl-0">
-          <div className="">
+          <div className="prose lg:prose-xl">
             <PortableText value={data?.Article?.bodyRaw} />
           </div>
         </div>
