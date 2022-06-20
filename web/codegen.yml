@@ -1,0 +1,9 @@
+overwrite: true
+schema: "https://dfl5mg39.api.sanity.io/v1/graphql/production/default"
+documents: "src/graphql/**/*.graphql"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
