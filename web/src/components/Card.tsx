@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { Article } from "../generated/graphql";
 import { formatDate } from "../utils/date";
+import { motion } from "framer-motion";
 
 const Card: React.FC<{ post: Article }> = ({ post }) => {
   const date = useMemo(() => formatDate(post?._createdAt), [post._createdAt]);
@@ -17,7 +18,9 @@ const Card: React.FC<{ post: Article }> = ({ post }) => {
         </time>
       </div>
       <div className="flex flex-col gap-3">
-        <h3 className="font-bold text-xl">{post.title}</h3>
+        <motion.h3 layoutId={`${post._id}`} className="font-bold text-xl">
+          {post.title}
+        </motion.h3>
         <Link href={"/"}>
           <a className="mt-4 relative block text-sm font-light leading-[3px] after:content-[''] after:absolute after:transform after:translate-x-2 after:translate-y-[2px] after:h-[1px] after:w-10 after:bg-white">
             Details

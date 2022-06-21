@@ -4,8 +4,9 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import {
   ArticleBySlugQuery,
-  useArticleBySlugQuery
+  useArticleBySlugQuery,
 } from "../../generated/graphql";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Content: React.FC<{ data: ArticleBySlugQuery | undefined }> = ({
   data,
@@ -19,13 +20,19 @@ const Content: React.FC<{ data: ArticleBySlugQuery | undefined }> = ({
               <a>Home</a>
             </Link>
             <span> {"|"} </span>
+
             <span>
               {data?.allArticle[0] && data?.allArticle[0].category?.title}{" "}
             </span>
           </div>
-          <h1 className="text-2xl lg:text-[64px] font-bold leading-tight not-prose mb-10">
-            {data?.allArticle[0] && data?.allArticle[0]?.title}
-          </h1>
+          <AnimatePresence>
+            <motion.h1
+              layoutId={`${data?.allArticle[0] && data?.allArticle[0]?._id}`}
+              className="text-2xl lg:text-[64px] font-bold leading-tight not-prose mb-10"
+            >
+              {data?.allArticle[0] && data?.allArticle[0]?.title}
+            </motion.h1>
+          </AnimatePresence>
         </div>
         <PortableText
           value={data?.allArticle[0] && data?.allArticle[0]?.bodyRaw}
