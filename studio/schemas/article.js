@@ -1,3 +1,5 @@
+import { isUniqueAcrossAllDocuments } from "../lib/lib";
+
 export default {
   name: "article",
   type: "document",
@@ -16,13 +18,14 @@ export default {
         source: "title",
         maxLength: 96,
         auto: true,
+        isUnique: isUniqueAcrossAllDocuments,
       },
     },
     {
-      title: 'Category',
-      name: 'category',
-      type: 'reference',
-      to: [{type: 'category'}]
+      title: "Category",
+      name: "category",
+      type: "reference",
+      to: [{ type: "category" }],
       // Learn more at https://youtu.be/AaKfuhndEf8
     },
     {

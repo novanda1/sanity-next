@@ -1,3 +1,5 @@
+import { isUniqueAcrossAllDocuments } from "../lib/lib";
+
 export default {
   name: "category",
   type: "document",
@@ -16,6 +18,7 @@ export default {
         source: "title",
         maxLength: 96,
         auto: true,
+        isUnique: isUniqueAcrossAllDocuments,
       },
     },
   ],
