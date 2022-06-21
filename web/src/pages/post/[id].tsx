@@ -1,32 +1,46 @@
 import { PortableText } from "@portabletext/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
-import { useArticleQuery } from "../../generated/graphql";
+import {
+  useArticleBySlugQuery,
+  useArticleQuery,
+} from "../../generated/graphql";
 
 const SinglePost: React.FC = () => {
   const {
     query: { id },
   } = useRouter();
 
-  const { data, loading, error } =
-    useArticleQuery({
-      variables: { id: id as string },
-    });
+  const { data, loading, error } = useArticleBySlugQuery({
+    variables: { slug: id as string },
+  });
 
   return (
     <Layout>
       <div className="relative flex flex-col w-screen mx-auto text-base max-w-1440 text-dawn md:flex-row h-full min-h-screen">
         <div
           className="relative my-20 mx-auto
-        ">
+        "
+        >
           <div className="prose lg:prose-lg prose-invert mx-auto">
             <div className="not-prose">
+              <div className="text-sm font-bold">
+                <Link href="/">
+                  <a>Home</a>
+                </Link>
+                <span> {"|"} </span>
+                <span>
+                  {data?.allArticle[0] &&
+                    data?.allArticle[0].category?.title}{" "}
+                </span>
+              </div>
               <h1 className="text-2xl lg:text-[64px] font-bold leading-tight not-prose mb-10">
-                {data?.Article?.title}
+                {data?.allArticle[0] && data?.allArticle[0]?.title}
               </h1>
             </div>
             <PortableText
-              value={data?.Article?.bodyRaw}
+              value={data?.allArticle[0] && data?.allArticle[0]?.bodyRaw}
             />
           </div>
         </div>

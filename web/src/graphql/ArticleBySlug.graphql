@@ -1,0 +1,5 @@
+query ArticleBySlug($slug: String) {
+  allArticle(where: { slug: { current: { eq: $slug } } }) {
+    ...ArticleFragment
+  }
+}
