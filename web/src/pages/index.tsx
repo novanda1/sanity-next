@@ -9,10 +9,10 @@ export default function IndexPage() {
     <div className="relative flex flex-col w-screen mx-auto text-base max-w-1440 text-dawn md:flex-row h-full min-h-screen">
       <div className="static flex flex-col justify-between w-full p-[24px] lg:p-[32px] md:max-w-496 md:fixed md:h-screen lg:py-[88px] lg:pl-[88px] md:pr-[72px] lg:pr-0">
         <div>
-          <h1 className="text-[64px] font-bold leading-tight lg:leading-none">
+          <h1 className="text-[38px] md:text-[64px] font-bold leading-tight lg:leading-none">
             Sanity Next
           </h1>
-          <h2 className="mt-[16px] lg:text-[24px] font-bold text-xl">
+          <h2 className="mt-[5px] md:mt-[16px] lg:text-[24px] font-bold text-xl">
             Sanity for Content Provider
           </h2>
 
