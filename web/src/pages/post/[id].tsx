@@ -8,32 +8,26 @@ const SinglePost: React.FC = () => {
     query: { id },
   } = useRouter();
 
-  const { data, loading, error } = useArticleQuery({
-    variables: { id: id as string },
-  });
+  const { data, loading, error } =
+    useArticleQuery({
+      variables: { id: id as string },
+    });
 
   return (
     <Layout>
       <div className="relative flex flex-col w-screen mx-auto text-base max-w-1440 text-dawn md:flex-row h-full min-h-screen">
-        <div className="static flex flex-col justify-between w-full p-[24px] lg:p-[32px] md:max-w-496 md:fixed md:h-screen lg:py-[88px] lg:pl-[88px] md:pr-[72px] lg:pr-0">
-          <div>
-            <h1 className="text-[64px] font-bold leading-tight lg:leading-none">
-              Sanity Next
-            </h1>
-            <h2 className="mt-[16px] lg:text-[24px] font-bold text-xl">
-              Sanity for Content Provider
-            </h2>
-
-            <p className="mt-[28px] font-light leading-e text-zinc-200 text-[14px]">
-              Sanity.io is the unified content platform that powers better
-              digital experiences. With Sanity you can structure your content,
-              so it can be transformed and distributed any way you like.
-            </p>
-          </div>
-        </div>
-        <div className="static p-[24px] lg:p-[32px] w-full md:max-w-536 lg:max-w-736 md:absolute md:right-0 lg:py-[88px] lg:pr-[88px] md:pl-0">
-          <div className="prose lg:prose-lg prose-invert">
-            <PortableText value={data?.Article?.bodyRaw} />
+        <div
+          className="relative my-20 mx-auto
+        ">
+          <div className="prose lg:prose-lg prose-invert mx-auto">
+            <div className="not-prose">
+              <h1 className="text-2xl lg:text-[64px] font-bold leading-tight not-prose mb-10">
+                {data?.Article?.title}
+              </h1>
+            </div>
+            <PortableText
+              value={data?.Article?.bodyRaw}
+            />
           </div>
         </div>
 
