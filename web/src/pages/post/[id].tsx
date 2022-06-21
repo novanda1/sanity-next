@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import {
   ArticleBySlugQuery,
-  useArticleBySlugQuery,
+  useArticleBySlugQuery
 } from "../../generated/graphql";
 
 const Content: React.FC<{ data: ArticleBySlugQuery | undefined }> = ({
