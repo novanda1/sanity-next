@@ -1,29 +1,25 @@
 import { PortableText } from "@portabletext/react";
-import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import {
   ArticleBySlugQuery,
-  useArticleBySlugQuery,
+  useArticleBySlugQuery
 } from "../../generated/graphql";
-import { motion, AnimatePresence } from "framer-motion";
 
 const Content: React.FC<{ data: ArticleBySlugQuery | undefined }> = ({
   data,
 }) => {
+  const { back } = useRouter();
+
   return (
     <div className="relative my-20 mx-auto">
-      <div className="prose lg:prose-lg prose-invert mx-auto">
+      <div className="prose lg:prose-lg prose-invert mx-auto px-5 md:px-0">
         <div className="not-prose">
-          <div className="text-sm font-bold">
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-            <span> {"|"} </span>
-
-            <span>
-              {data?.allArticle[0] && data?.allArticle[0].category?.title}{" "}
-            </span>
+          <div className="text-sm mb-2">
+            <button type="button" onClick={back}>
+              Back
+            </button>
           </div>
           <AnimatePresence>
             <motion.h1
@@ -34,9 +30,11 @@ const Content: React.FC<{ data: ArticleBySlugQuery | undefined }> = ({
             </motion.h1>
           </AnimatePresence>
         </div>
-        <PortableText
-          value={data?.allArticle[0] && data?.allArticle[0]?.bodyRaw}
-        />
+        <motion.div>
+          <PortableText
+            value={data?.allArticle[0] && data?.allArticle[0]?.bodyRaw}
+          />
+        </motion.div>
       </div>
     </div>
   );
