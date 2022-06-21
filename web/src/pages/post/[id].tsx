@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import {
   ArticleBySlugQuery,
-  useArticleBySlugQuery
+  useArticleBySlugQuery,
 } from "../../generated/graphql";
 
 const Content: React.FC<{ data: ArticleBySlugQuery | undefined }> = ({
@@ -17,9 +17,15 @@ const Content: React.FC<{ data: ArticleBySlugQuery | undefined }> = ({
       <div className="prose lg:prose-lg prose-invert mx-auto px-5 md:px-0">
         <div className="not-prose">
           <div className="text-sm mb-2">
-            <button type="button" onClick={back}>
+            <motion.button
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              type="button"
+              onClick={back}
+            >
               Back
-            </button>
+            </motion.button>
           </div>
           <AnimatePresence>
             <motion.h1
@@ -30,7 +36,11 @@ const Content: React.FC<{ data: ArticleBySlugQuery | undefined }> = ({
             </motion.h1>
           </AnimatePresence>
         </div>
-        <motion.div>
+        <motion.div
+          initial={{ y: -10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
           <PortableText
             value={data?.allArticle[0] && data?.allArticle[0]?.bodyRaw}
           />
